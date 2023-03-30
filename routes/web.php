@@ -17,10 +17,10 @@ use App\Models\Book; //追加
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::resource('/Book','BookController');
 //本：ダッシュボード表示(books.blade.php)
 Route::get('/', [BookController::class,'index'])->middleware(['auth'])->name('book_index');
-Route::get('/', [BookController::class,'index1'])->middleware(['auth'])->name('book_index1');
+// Route::get('/', [BookController::class,'index1'])->middleware(['auth'])->name('book_index1');
 
 
 Route::get('/dashboard', [BookController::class,'index'])->middleware(['auth'])->name('dashboard');
