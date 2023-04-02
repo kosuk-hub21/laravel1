@@ -29,7 +29,7 @@ Route::get('/質問一覧', [BookController::class,'index1'])->middleware(['auth
 
 
 //本：追加 
-Route::post('/books',[BookController::class,"store"])->name('book_store');
+Route::get('/books',[BookController::class,"store"])->name('book_store');
 
 
 //本：削除 

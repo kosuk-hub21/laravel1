@@ -62,18 +62,18 @@ class BookController extends Controller
          'published'   => 'required',
     ]);
 
-    //バリデーション:エラー 
-    if ($validator->fails()) {
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
+    // バリデーション:エラー 
+    // if ($validator->fails()) {
+    //     return redirect('/')
+    //         ->withInput()
+    //         ->withErrors($validator);
+    // }
 
     //以下に登録処理を記述（Eloquentモデル）
 	  // Eloquentモデル
 	  $books = new Book;
 	  $books->user_id = Auth::id();//ここを追加
-	  $books->item_content0   = $request->item_content0;
+	  $books->item_content0 = $request->item_content0;
 	  $books->item_content1 = $request->item_content1;
 	  $books->item_content2 = $request->item_comntent2;
 	  $books->published   = $request->published;
@@ -116,22 +116,22 @@ class BookController extends Controller
          $validator = Validator::make($request->all(), [
              'id' => 'required',
              'item_name' => 'required|min:3|max:255',
-             'item_number' => 'required|min:1|max:3',
-             'item_amount' => 'required|max:6',
+             'item_number' => 'required|min:1|max:255',
+             'item_amount' => 'required|max:255',
              'published' => 'required',
         ]);
         //バリデーション:エラー
-         if ($validator->fails()) {
-             return redirect('/booksedit/'.$request->id)
-                 ->withInput()
-                 ->withErrors($validator);
-        }
+        //  if ($validator->fails()) {
+        //      return redirect('/booksedit/'.$request->id)
+        //          ->withInput()
+        //          ->withErrors($validator);
+        // }
         
         //データ更新
         $books = Book::where('user_id',Auth::id())->find($request->id);
-        $books->item_name   = $request->item_name;
-        $books->item_number = $request->item_number;
-        $books->item_amount = $request->item_amount;
+        $books->item_content0 = $request->item_content0;
+        $books->item_content1 = $request->item_content1;
+        $books->item_content2 = $request->item_content2;
         $books->published   = $request->published;
         $books->save();
         return redirect('/');

@@ -29,7 +29,7 @@
 
 
             <!-- 本のタイトル -->
-            <form action="{{ url('books') }}" method="POST" class="w-full max-w-lg">
+            <form action="{{ url('books') }}" method="get" class="w-full max-w-lg">
                 @csrf
                   <div class="flex flex-col px-2 py-2">
                    <!-- カラム１ -->

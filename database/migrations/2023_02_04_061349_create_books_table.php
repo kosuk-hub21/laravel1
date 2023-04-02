@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id'); //Add:user_id
-            $table->integer('item_content0'); //追加
+            // $table->longText(‘url’)->nullable(); //追加
+            $table->integer('item_content0');//追加
             $table->integer('item_content1'); //追加
             $table->integer('item_content2'); //追加
             $table->datetime('published'); //追加
