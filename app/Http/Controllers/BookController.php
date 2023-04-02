@@ -115,9 +115,9 @@ class BookController extends Controller
          //バリデーション
          $validator = Validator::make($request->all(), [
              'id' => 'required',
-             'item_name' => 'required|min:3|max:255',
-             'item_number' => 'required|min:1|max:255',
-             'item_amount' => 'required|max:255',
+             'item_content0' => 'required|min:3|max:255',
+             'item_content1' => 'required|min:1|max:255',
+             'item_content2' => 'required|max:255',
              'published' => 'required',
         ]);
         //バリデーション:エラー
