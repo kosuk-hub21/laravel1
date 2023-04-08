@@ -54,28 +54,29 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-         //バリデーション
+        //バリデーション
     $validator = Validator::make($request->all(), [
-         'item_content0' => 'required|min:3|max:255',
-         'item_content1' => 'required|min:1|max:225',
-         'item_content2' => 'required|max:225',
+         'item_name' => 'required|min:3|max:255',
+         'item_number' => 'required|min:1|max:3',
+         'item_amount' => 'required|max:6',
          'published'   => 'required',
     ]);
 
+
     // バリデーション:エラー 
-    // if ($validator->fails()) {
-    //     return redirect('/')
-    //         ->withInput()
-    //         ->withErrors($validator);
-    // }
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
 
     //以下に登録処理を記述（Eloquentモデル）
 	  // Eloquentモデル
 	  $books = new Book;
 	  $books->user_id = Auth::id();//ここを追加
-	  $books->item_content0 = $request->item_content0;
-	  $books->item_content1 = $request->item_content1;
-	  $books->item_content2 = $request->item_comntent2;
+	  $books->item_name   = $request->item_name;
+	  $books->item_number = $request->item_number;
+	  $books->item_amount = $request->item_amount;
 	  $books->published   = $request->published;
 	  $books->save(); 
 	  return redirect('/');
@@ -115,23 +116,23 @@ class BookController extends Controller
          //バリデーション
          $validator = Validator::make($request->all(), [
              'id' => 'required',
-             'item_content0' => 'required|min:3|max:255',
-             'item_content1' => 'required|min:1|max:255',
-             'item_content2' => 'required|max:255',
+             'item_name' => 'required|min:3|max:255',
+             'item_number' => 'required|min:1|max:3',
+             'item_amount' => 'required|max:6',
              'published' => 'required',
         ]);
         //バリデーション:エラー
-        //  if ($validator->fails()) {
-        //      return redirect('/booksedit/'.$request->id)
-        //          ->withInput()
-        //          ->withErrors($validator);
-        // }
+         if ($validator->fails()) {
+             return redirect('/booksedit/'.$request->id)
+                 ->withInput()
+                 ->withErrors($validator);
+        }
         
         //データ更新
-        $books = Book::where('user_id',Auth::id())->find($request->id);
-        $books->item_content0 = $request->item_content0;
-        $books->item_content1 = $request->item_content1;
-        $books->item_content2 = $request->item_content2;
+        $books = Book::find($request->id);
+        $books->item_name   = $request->item_name;
+        $books->item_number = $request->item_number;
+        $books->item_amount = $request->item_amount;
         $books->published   = $request->published;
         $books->save();
         return redirect('/');

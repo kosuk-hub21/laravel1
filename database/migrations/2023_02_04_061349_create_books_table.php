@@ -11,19 +11,19 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('books', function (Blueprint $table) {
+   public function up()
+     {
+         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id'); //Add:user_id
-            // $table->longText(‘url’)->nullable(); //追加
-            $table->integer('item_content0');//追加
-            $table->integer('item_content1'); //追加
-            $table->integer('item_content2'); //追加
+            $table->string('item_name'); //追加
+            $table->integer('item_number'); //追加
+            $table->integer('item_amount'); //追加
             $table->datetime('published'); //追加
             $table->timestamps();
-        });
-    }
+         });
+ }
+// $table->longText(‘url’)->nullable(); //追加
 
     /**
      * Reverse the migrations.
