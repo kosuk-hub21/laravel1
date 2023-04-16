@@ -4,8 +4,8 @@
     <!--ヘッダー[START]-->
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <form action="{{ route('質問一覧') }}" method="GET" class="w-full max-w-lg">
-                <x-button class="bg-gray-100 text-gray-900">{{ __('質問一覧') }}</x-button>
+            <form action="{{ route('一覧') }}" method="GET" class="w-full max-w-lg">
+                <x-button class="bg-gray-100 text-gray-900">{{ __('一覧') }}</x-button>
             </form>
         </h2>
     </x-slot>

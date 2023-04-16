@@ -24,7 +24,7 @@ Route::get('/', [BookController::class,'index'])->middleware(['auth'])->name('bo
 
 
 Route::get('/dashboard', [BookController::class,'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/質問一覧', [BookController::class,'index1'])->middleware(['auth'])->name('質問一覧');
+Route::get('/一覧', [BookController::class,'index1'])->middleware(['auth'])->name('一覧');
 // Route::get('/質問一覧', [QuestionController::class,'index'])->middleware(['auth'])->name('質問一覧');
 
 
